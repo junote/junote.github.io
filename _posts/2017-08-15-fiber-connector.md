@@ -6,6 +6,7 @@ categories: wiki
 tags: 光纤
 mathjax: true
 ---
+![](https://github.com/junote/junote.github.io/blob/master/img/fiber-connector.png)
 
 **（1)FC型光纤连接器**   这种连接器最早是由日本NTT研制。FC是Ferrule Connector的缩写，表明其外部加强方式是采用金属套，紧固方式为螺丝扣。最早，FC类型的连接器，采用的陶瓷插针的对接端媸瞧矫娼哟シ绞剑‵C）。此类连接器结构简单，操作方便，制作容易，但光纤端面对微尘较为敏感，且容易产生菲涅尔反射，提高回波损耗性能较为困难。后来，对该类型连接器做了改进，采用对接端面呈球面的插针（PC），而外部结构没有改变，使得插入损耗和回波损耗性能有了较大幅度的提高。
 
