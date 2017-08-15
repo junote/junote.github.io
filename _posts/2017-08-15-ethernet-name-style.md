@@ -2,7 +2,7 @@
 layout: post
 title:  "以太网标准命名规则"
 date:   2017-08-15
-categories: wiki 
+categories: 图解网络硬件 
 tags: 以太网
 mathjax: true
 ---
