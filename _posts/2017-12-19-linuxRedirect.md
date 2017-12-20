@@ -30,12 +30,14 @@ linux启动后，会默认打开3个文件描述符，分别是：标准输入st
 ~~~
 #正确输出与错误输出都显示在屏幕了，现在需要把正确输出写入suc.txt
 # 1>可以省略，不写，默认所至标准输出
-
 ls test.sh test1.sh 1>suc.txt
 ls: test1.sh: 没有这个文件和目录
 
 cat suc.txt 
 test.sh
+~~~
+
+~~~
 
 #把错误输出，不输出到屏幕，输出到err.txt
 ls test.sh test1.sh 1>suc.txt 2>err.txt
@@ -43,26 +45,54 @@ cat suc.txt err.txt
 test.sh
 ls: test1.sh: 没有这个文件和目录
 
+~~~
+
+~~~
+
 #继续追加把输出写入suc.txt err.txt  “>>”追加操作符
 ls test.sh test1.sh 1>>suc.txt 2>>err.txt 
+
+~~~
+
+~~~
 
 #将错误输出信息关闭掉
 ls test.sh test1.sh 2>&-
 test.sh
+
+~~~
+
+~~~
 
 ls test.sh test1.sh 2>/dev/null
 test.sh
 #&[n] 代表是已经存在的文件描述符，&1 代表输出 &2代表错误输出 &-代表关闭与它绑定的描述符
 #/dev/null 这个设备，是linux 中黑洞设备，什么信息只要输出给这个设备，都会给吃掉 
 
+~~~
+
+~~~
+
 #关闭所有输出
 ls test.sh test1.sh  1>&- 2>&- 
+
+~~~
+
+~~~
 
 #关闭 1 ，2 文件描述符
 ls test.sh test1.sh  2>/dev/null 1>/dev/null
 
+~~~
+
+~~~
+
 #将1,2 输出转发给/dev/null设备 
 ls test.sh test1.sh >/dev/null 2>&1
+
+~~~
+
+~~~
 
 #将错误输出2 绑定给 正确输出 1，然后将 正确输出 发送给 /dev/null设备  这种常用
 ls test.sh test1.sh &>/dev/null
@@ -93,12 +123,19 @@ testing
 cat file test
 #这里按下 [ctrl]+d 离开 
 #从标准输入【键盘】获得数据，然后输出给catfile文件
- 
+
+~~~
+
+~~~
+
 cat>catfile <test.sh
 #cat 从test.sh 获得输入数据，然后输出给文件catfile
+
+~~~
+
+~~~ 
  
- 
- cat>catfile <<eof
+cat>catfile <<eof
 test a file
 test!
 eof 
@@ -125,8 +162,7 @@ exec 1>suc.txt
 #执行命令，发现什么都不返回了，因为标准输出已经输出到suc.txt文件了
 
 exec 1>&6
-#恢复标准输出
- 
+#恢复标准输出 
  
 exec 6>&-
 #关闭fd 6描述符
