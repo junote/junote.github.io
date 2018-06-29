@@ -37,6 +37,6 @@ Inline Mathjax $a \neq b$
 
 
 ![]({{site.github.url}}/img/eth-name01.png)
-[[img/eth-name01.png]]
+
 
 
