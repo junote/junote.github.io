@@ -36,6 +36,6 @@ $$
 Inline Mathjax $a \neq b$
 
 
-![](junote.github.io/blob/master/img/eth-name01.png?raw=true)
+![](img/eth-name01.png)
 
 
