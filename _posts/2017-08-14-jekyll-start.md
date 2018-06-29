@@ -36,11 +36,12 @@ $$
 Inline Mathjax $a \neq b$
 
 
-![]({{site.github.url}}/img/eth-name01.png)
+relative addr for photo, use "{{site.github.url}}" as root addr.
+
+"![]({{site.github.url}}/img/eth-name01.png)"
 
 
 
-[[img/eth-name01.png]]
 
 
 
