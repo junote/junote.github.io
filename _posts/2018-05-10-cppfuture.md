@@ -14,12 +14,13 @@ std::condition_variable可以用于异步事件的重复通知，但是有些时
 
 <future> 头文件中包含了以下几个类和函数：
 
-Providers 类：std::promise, std::package_task
-Futures 类：std::future, shared_future.
-Providers 函数：std::async()
-其他类型：std::future_error, std::future_errc, std::future_status, std::launch.
+- Providers 类：std::promise, std::package_task
+- Futures 类：std::future, shared_future.
+- Providers 函数：std::async()
+- 其他类型：std::future_error, std::future_errc, std::future_status, std::launch.
 
 std::future提供了一个访问异步操作结果的机制，它和线程是一个级别的属于低层次的对象，在它之上高一层的是std::packaged_task和std::promise，他们内部都有future以便访问异步操作结果，std::packaged_task包装的是一个异步操作，而std::promise包装的是一个值，都是为了方便异步操作的，因为有时我需要获取线程中的某个值，这时就用std::promise，而有时我需要获一个异步操作的返回值，这时就用std::packaged_task。
+
 
 ## future_status
 
@@ -28,6 +29,7 @@ std::future提供了一个访问异步操作结果的机制，它和线程是一
 |future_status::deferred|The function to calculate the result has not been started yet |
 |future_status::ready|The result is ready |
 |future_status::timeout|The timeout has expired|
+
 
 ~~~
 #include <iostream>

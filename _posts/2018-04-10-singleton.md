@@ -22,6 +22,8 @@ mathjax: false
 
 1. 懒汉式是以时间换空间的方式。
 2. 饿汉式是以空间换时间的方式。
+
+
 ~~~
 #include <stdio.h>
 class Singleton{
