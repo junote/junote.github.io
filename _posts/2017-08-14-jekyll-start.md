@@ -35,3 +35,13 @@ $$
 
 Inline Mathjax $a \neq b$
 
+
+relative addr for photo, use "{{site.github.url}}" as root addr.
+
+"![]({{site.github.url}}/img/eth-name01.png)"
+
+
+
+
+
+
