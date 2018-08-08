@@ -1,13 +1,4 @@
----
-layout: post
-title:  "windows工具"
-date:   2017-12-26
-categories: windows 
-tags: tools
-mathjax: false
----
-* content
-{:toc}
+
 
 
 #### 使用命令搜索(find)一个文件

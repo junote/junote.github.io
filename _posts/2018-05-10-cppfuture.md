@@ -12,7 +12,7 @@ mathjax: false
 
 std::condition_variable可以用于异步事件的重复通知，但是有些时候可能只等待事件发生一次，比如：等待特定的航班，用条件变量大杀器有点浪费了。C++11标准库提供了几种异步任务机制。通常thread不能返回线程执行的结果(可以通过引用参数返回)，而在异步处理当中很多时候都需要获得计算的结果。如果只获取结果一次那么选用future，即通过future获取了结果后，后续再通过此future获取结果将会出错。
 
-<future> 头文件中包含了以下几个类和函数：
+future 头文件中包含了以下几个类和函数：
 
 - Providers 类：std::promise, std::package_task
 - Futures 类：std::future, shared_future.
@@ -70,7 +70,9 @@ result is 8
 ~~~
 
 ## promise
+
 promise为获取线程函数中的某个值提供便利，在线程函数中给外面传进来的promise赋值，当线程函数执行完成之后就可以通过promis获取该值了，值得注意的是取值是间接的通过promise内部提供的future来获取的。它的基本用法：
+
 ~~~
 std::promise<int> pr;
 std::thread t([](std::promise<int>& p){ p.set_value_at_thread_exit(9); },std::re(pr));
@@ -79,6 +81,7 @@ auto r = f.get();
 ~~~
 
 ## packaged_task
+
 packaged_task它包装了一个可调用的目标（如function, lambda expression, bind expression, or another function object）,以便异步调用。
 
 ~~~

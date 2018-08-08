@@ -1,13 +1,4 @@
----
-layout: post
-title:  "vscode"
-date:   2017-01-14
-categories: vscode
-tags: vscod3 
-mathjax: false
----
-* content
-{:toc}
+
 
 ##  Win7 
 1. 安装 mingw，添加gcc相关的软件。
