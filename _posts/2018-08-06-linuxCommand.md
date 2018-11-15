@@ -77,6 +77,13 @@ sed 's/book/books/' file  //替换操作：s命令
 
 sed '/^$/d' file //删除空白行：
 
+sed -n “3p” filename #输出文件的第3行
+sed -n “2,5p“ filename #输出文件的第2到5行
+sed ”/abc/d“ filename #删除包含“abc”的行
+sed “2d” filename #删除第2行
+sed ”$d“ filename #删除最后一行
+
+
 
 ~~~
 
@@ -177,7 +184,69 @@ grpunconv   注：通过/etc/group 和/etc/gshadow 文件内容来同步或创�
 ~~~
 
 
+## trap
+
+trap命令用于指定在接收到信号后将要采取的动作，常见的用途是在脚本程序被中断时完成清理工作。
+
+~~~
+trap "exit 1" HUP INT PIPE QUIT TERM
+~~~
+表示当shell收到HUP INT PIPE QUIT TERM这几个命令时，当前执行的程序会读取参数“exit 1”，并将它作为命令执行。
+
+|信号名称| 	信号数|	描述|
+|-|-|-|
+|SIGHUP|1|本信号在用户终端连接(正常或非正常)结束时发出, 通常是在终端的控制进程结束时, 通知同一session内的各个作业, 这时它们与控制终端不再关联。|
+|SIGINT|2|程序终止(interrupt)信号, 在用户键入INTR字符(通常是Ctrl C)时发出。|
+|SIGQUIT|	3|	和SIGINT类似, 但由QUIT字符(通常是Ctrl /)来控制. |
+|SIGFPE	|8|	在发生致命的算术运算错误时发出. |
+|SIGKILL|	9|	用来立即结束程序的运行.|
+|SIGALRM|	14|	时钟定时信号, 计算的是实际的时间或时钟时间. alarm函数使用该信号。|
+|SIGTERM|	15|	程序结束(terminate)信号, 与SIGKILL不同的是该信号可以被阻塞和处理. 通常用来要求程序自己正常退出. shell命令kill缺省产生这个信号。|
+
+
+1. 清理临时文件
+~~~
+trap "rm $WORKDIR/work1$$ $WORKDIR/dataout$$; exit" 1 2
+~~~
+
+2. 忽略信号
+~~~
+trap '' 2
+~~~
+
+3. 重设陷阱
+
+~~~
+ trap 1 2
+~~~
+
+## 用shell来发tcp包
+
+~~~
+    exec 8<>/dev/tcp/10.100.70.139/19006
+    echo -e "stats" >&8
+~~~
+tcpdump
+~~~
+udo tcpdump -iany port 19006 -Xnlps0
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on any, link-type LINUX_SLL (Linux cooked), capture size 65535 bytes
+23:56:54.177781 IP 10.100.70.139.34209 > 10.100.70.139.19006: Flags [S], seq 2048518213, win 43690, options [mss 65495,sackOK,TS val 1173337789 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 5ef8 4000 4006 39e6 0a64 468b  E..<^.@.@.9..dF.
+        0x0010:  0a64 468b 85a1 4a3e 7a19 e845 0000 0000  .dF...J>z..E....
+        0x0020:  a002 aaaa a20c 0000 0204 ffd7 0402 080a  ................
+        0x0030:  45ef b6bd 0000 0000 0103 0308 0000 0000  E...............
+        0x0040:  0000 0000 0000 0000 0000 0000            ............
+23:56:54.177794 IP 10.100.70.139.19006 > 10.100.70.139.34209: Flags [S.], seq 480321333, ack 2048518214, win 43690, options [mss 65495,sackOK,TS val 1173337789 ecr 1173337789,nop,wscale 8], length 0
+        0x0000:  4500 003c 0000 4000 4006 98de 0a64 468b  E..<..@.@....dF.
+        0x0010:  0a64 468b 4a3e 85a1 1ca1 1f35 7a19 e846  .dF.J>.....5z..F
+        0x0020:  a012 aaaa a20c 0000 0204 ffd7 0402 080a  ................
+        0x0030:  45ef b6bd 45ef b6bd 0103 0308 0000 0000  E...E...........
+        0x0040:  0000 0000 0000 0000 0000 0000            ............
+~~~
 ## reference
+
+1. [Bash 快速参考表](https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh)
 
 
 

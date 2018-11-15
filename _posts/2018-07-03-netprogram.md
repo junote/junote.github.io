@@ -518,26 +518,7 @@ getnameinfo通过socket地址获取host name和服务名
 ~~~
 
 
-## 高级IO函数
 
-
-#### pipe
-
-pipe用来创建管道，实现进程间的通信。
-
-~~~
-#include <unistd.h>
-int pipe(int fd[2]);
-~~~
-
-参数时文件描述符的数组，构成管道的两端。
-
-pipe是一个单向管道，只能向fd[1]写入数据，fd[0]读数据
-
-~~~
-#include <socket.h>
-
-~~~
 
 ###  reference
 

@@ -19,7 +19,6 @@ mathjax: false
 ~~~
 2. tools
 ~~~
-yum install git
 yum -y groupinstall "Development tools"
 yum -y install glibc-devel.i686 texi2html texinfo chrpath samba samba-client
 
@@ -52,15 +51,17 @@ service ip6tables stop
 //永久关闭防火墙
 chkconfig iptables off
 chkconfig ip6tables off
+
 ~~~
 ## vbox
 ~~~
 yum update
-yum install gcc kernel-devel kernel-headers dkms make bzip2 
+yum install gcc kernel-devel linux-headers-$(uname -r) dkms make bzip2 
 reboot
 
 cd media
 mkdir cdrom
+  //menu insert addin
 mount /dev/sr0 /media/cdrom
 cd /media/cdrom
 ./VBoxLinuxAdditions.run  --nox11

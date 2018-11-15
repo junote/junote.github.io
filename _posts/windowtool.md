@@ -1,6 +1,6 @@
 
 
-
+## commandline
 #### 使用命令搜索(find)一个文件
 
 
@@ -15,9 +15,32 @@
 ~~~
 
 
-#### tool list
+## WinSoft
+
+#### File
 
 |tool|download addr|
 |:-:|:-:|
-|tcmd||
-|everything||
+|total commander|https://www.ghisler.com/|
+|everything|http://www.voidtools.com/|
+|listary|https://www.listary.com/download|
+
+#### Develep
+|tool||
+|-|-|
+|vscode|https://code.visualstudio.com/|
+| Beyond Compare |http://www.scootersoftware.com/download.php|
+|hxd|https://mh-nexus.de/en/hxd/|
+|notepad++|https://notepad-plus-plus.org/|
+
+## SSH
+|tool||
+|-|-|
+|xshell|http://www.netsarang.com/products/xsh_overview.html|
+|mobaxterm|https://mobaxterm.mobatek.net/download.html|
+|putty|for linux serial port|
+|SecureCRT|for win script|
+
+
+
+
