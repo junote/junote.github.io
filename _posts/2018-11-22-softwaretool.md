@@ -107,3 +107,31 @@ tig是git的一个插件，相对于git log来说显示日志记录比较漂亮�
 
 ### htop
 
+#### guake
+
+#### sougoupinying
+[setup](https://blog.csdn.net/lupengCSDN/article/details/80279177)
+
+#### autojump
+
+#### Remmina
+
+远程win7
+
+#### PyCharm
+python
+
+#### IDEA 
+java
+
+#### meld
+
+对比
+
+Putty 
+
+Master PDF Editor 
+
+foxsit
+
+nylas-mail
