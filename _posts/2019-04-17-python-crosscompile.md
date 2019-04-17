@@ -15,12 +15,15 @@ mathjax: false
 #### python
 1. 从[python org](https://www.python.org/downloads/source/)下载python3.6的稳定版，譬如3.6.8. python3.3以后的编译和以前不一样，需要安装相同python到本机。
 2. 解压，安装到本地服务器。
+
 ~~~
 ./configure
 make
 sudo make install
 ~~~
+
 3. 配置嵌入式环境，对于p2040，menv设置工作目录，denv设置编译器。可以测试一下下面的CC，CXX能否工作。
+
 ~~~
 source menv.sh
 csh
@@ -32,7 +35,9 @@ setenv AR  ppce500mc-wrswrap-linux-gnu-ar
 setenv STRIP  ppce500mc-wrswrap-linux-gnu-strip
 setenv RANLIB  ppce500mc-wrswrap-linux-gnu-ranlib
 ~~~
+
 4. 编译安装
+
 ~~~
 ./configure --host=powerpc-wrs-linux-gnu 
 --build=powerpc 
@@ -47,6 +52,7 @@ make
 make install
 ~~~
 5. 测试， 把prefix下的文件打包放到SD卡，接着解压配置python环境。
+
 ~~~
 unzip install.zip
 mount /dev/mmcblk0p1  /mnt/sdcard/
@@ -59,7 +65,8 @@ python3
 
 ~~~
 
-6. 移除本地的python36环境
+6. 移除本地的python36环境 
+
 ~~~
 rm -rf /usr/local/lib/python3.6
 rm -rf /usr/local/bin/2to3-3.6 to
@@ -72,15 +79,19 @@ rm -rf /usr/local/bin/idle3.6
 
 1. 从[github](https://github.com/pciutils/pciutils)下载zip包，解压到服务器。
 2. 如上，配置编译环境。
+
 ~~~
 source menv.sh
 csh
 source denv.sh
 ~~~
+
 3. 编译
+
 ~~~
 make HOST=linux CROSS_COMPILE=ppce500mc-wrswrap-linux-gnu- ZLIB=no  DNS=no 
 ~~~
+
 4. 把生成的lspci和setpci拷贝到sd卡并且export。
 
 
