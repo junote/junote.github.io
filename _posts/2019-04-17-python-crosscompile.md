@@ -58,14 +58,20 @@ unzip install.zip
 mount /dev/mmcblk0p1  /mnt/sdcard/
 export LANG=en_US.UTF-8
 export PATH="/mnt/sdcard/python3/bin:$PATH"
-export PYTHONHOME="/mnt/sdcard/python3/bin"
-export PYTHONPATH="/mnt/sdcard/python3/lib:/mnt/sdcard/python3/lib/python3.6:/mnt/sdcard/python3/lib/python3.6/lib-dynload"
+export PYTHONBASE="/mnt/sdcard/python3"
 
 python3
 
 ~~~
+6. 安装ipython，下载如下包，解压后用命令安装。
+在串口下无法显示输入，在ssh下可以
+~~~
+wcwidth，prompt_toolkit， backcall，ptyprocess，Pygments，traitlets setuptools simplegeneric setuptools_scm pickleshare pexpect decorator ipython_genutils six ipython
 
-6. 移除本地的python36环境 
+python3 setup.py install --prefix=/mnt/sdcard/python3
+~~~
+
+7. 移除本地的python36环境 
 
 ~~~
 rm -rf /usr/local/lib/python3.6
@@ -73,6 +79,9 @@ rm -rf /usr/local/bin/2to3-3.6 to
 rm -rf /usr/local/bin/pyvenv-3.6
 rm -rf /usr/local/bin/pydoc3.6
 rm -rf /usr/local/bin/idle3.6
+rm -rf /usr/local/lib/libpython3.6m.a
+rm -rf /usr/local/bin/python3.6*
+rm -rf /usr/local/bin/python3.6m*
 ~~~
 
 #### pciutils
@@ -89,7 +98,7 @@ source denv.sh
 3. 编译
 
 ~~~
-make HOST=linux CROSS_COMPILE=ppce500mc-wrswrap-linux-gnu- ZLIB=no  DNS=no 
+make HOST=linux CROSS_COMPILE=$CROSS_COMPILE ZLIB=no  DNS=no 
 ~~~
 
 4. 把生成的lspci和setpci拷贝到sd卡并且export。
