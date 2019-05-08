@@ -28,12 +28,9 @@ sudo make install
 source menv.sh
 csh
 source denv.sh
-setenv CC ppce500mc-wrswrap-linux-gnu-gcc
-setenv CXX  ppce500mc-wrswrap-linux-gnu-g++
-setenv LD  ppce500mc-wrswrap-linux-gnu-ld
-setenv AR  ppce500mc-wrswrap-linux-gnu-ar
-setenv STRIP  ppce500mc-wrswrap-linux-gnu-strip
-setenv RANLIB  ppce500mc-wrswrap-linux-gnu-ranlib
+setenv CFLAGS "--sysroot=${SYSROOT}" 
+setenv CPPFLAGS " --sysroot=${SYSROOT}" 
+setenv LDFLAGS=" -rdynamic -v --sysroot=${SYSROOT}" 
 ~~~
 
 4. 编译安装
@@ -46,6 +43,9 @@ ac_cv_file__dev_ptmx=no
 ac_cv_file__dev_ptc=no 
 --prefix=/home/jcai/ws/osm/python/install
 //prefix 定义安装地址
+
+
+vi Modules/Setup.dist  //配置moudles
 
 make
 
@@ -63,13 +63,35 @@ export PYTHONBASE="/mnt/sdcard/python3"
 python3
 
 ~~~
-6. 安装ipython，下载如下包，解压后用命令安装。
-在串口下无法显示输入，在ssh下可以
-~~~
-wcwidth，prompt_toolkit， backcall，ptyprocess，Pygments，traitlets setuptools simplegeneric setuptools_scm pickleshare pexpect decorator ipython_genutils six ipython
+6. 安装setuptool 和pip， 下载如下包，解压后用命令安装。
 
+~~~
 python3 setup.py install --prefix=/mnt/sdcard/python3
 ~~~
+
+6. 安装ipython，下载如下包，解压后用命令安装。
+在串口下无法显示输入，在ssh下可以。
+
+~~~
+pip install backcall-0.1.0.zip
+pip install simplegeneric-0.8.1.zip
+pip install wcwidth-0.1.7-py2.py3-none-any.whl
+pip install ptyprocess-0.6.0-py2.py3-none-any.whl
+pip install decorator-4.4.0-py2.py3-none-any.whl
+pip install ipython_genutils-0.2.0-py2.py3-none-any.whl
+pip install six-1.12.0-py2.py3-none-any.whl
+pip install traitlets-4.3.2-py2.py3-none-any.whl
+pip install pexpect-4.7.0-py2.py3-none-any.whl
+pip install pickleshare-0.7.5-py2.py3-none-any.whl
+pip install Pygments-2.3.1-py2.py3-none-any.whl
+pip install setuptools_scm-3.3.0-py2.py3-none-any.whl
+pip install prompt_toolkit-2.0.9-py3-none-any.whl
+pip install parso-0.4.0-py2.py3-none-any.whl
+pip install jedi-0.13.3-py2.py3-none-any.whl
+pip install ipython-7.5.0-py3-none-any.whl
+~~~
+
+
 
 7. 移除本地的python36环境 
 
@@ -95,13 +117,20 @@ csh
 source denv.sh
 ~~~
 
-3. 编译
+3. 修改配置文件 CFLAGS 和 LDFLAGS
+
+~~~
+5 CFLAGS=$(OPT) -Wall -W -Wno-parentheses -Wstrict-prototypes -Wmissing-prototypes --sysroot=${SYSROOT}
+6 LDFLAGS     =     -rdynamic -v --sysroot=${SYSROOT}
+~~~
+
+4. 编译
 
 ~~~
 make HOST=linux CROSS_COMPILE=$CROSS_COMPILE ZLIB=no  DNS=no 
 ~~~
 
-4. 把生成的lspci和setpci拷贝到sd卡并且export。
+5. 把生成的lspci和setpci拷贝到sd卡并且export。
 
 
 #### reference
