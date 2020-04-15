@@ -30,7 +30,7 @@ mathjax: false
 1. 进程独立占有资源，只有一个线程，通过操作系统的通讯渠道（信号，套接字，文件，管道）与其他进程通信。
 2. 线程共享地址空间，相互独立运行，
 
-####　为什么使用并发
+#### 为什么使用并发
 
 1. 为了分离专注点，不同的程序关注不同的事情。
 2. 为了性能，多核的时代。
@@ -43,8 +43,8 @@ mathjax: false
 
 ~~~
 #include <iostream>
-#include <thread
-using namespace std
+#include <thread>
+using namespace std;
 void hello()
 {
     cout << "hello,concurrent world\n";

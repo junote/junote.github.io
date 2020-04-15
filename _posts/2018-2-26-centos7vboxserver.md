@@ -21,6 +21,7 @@ mathjax: false
 ~~~
 yum -y groupinstall "Development tools"
 yum -y install glibc-devel.i686 texi2html texinfo chrpath samba samba-client
+yum install the_silver_searcher
 
 ~~~
 3. user

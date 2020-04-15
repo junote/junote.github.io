@@ -244,6 +244,31 @@ listening on any, link-type LINUX_SLL (Linux cooked), capture size 65535 bytes
         0x0030:  45ef b6bd 45ef b6bd 0103 0308 0000 0000  E...E...........
         0x0040:  0000 0000 0000 0000 0000 0000            ............
 ~~~
+
+## Understanding /etc/shadow file
+
+![](../img/shadow.jpg)
+    
+    1. Username : It is your login name.
+    2. Password : It is your encrypted password. The password should be minimum 8-12 characters long including special characters, digits, lower case alphabetic and more. Usually password format is set to $id$salt$hashed, The $id is the algorithm used On GNU/Linux as follows:
+        $1$ is MD5
+        $2a$ is Blowfish
+        $2y$ is Blowfish
+        $5$ is SHA-256
+        $6$ is SHA-512
+    3. Last password change (lastchanged) : Days since Jan 1, 1970 that password was last changed
+    4. Minimum : The minimum number of days required between password changes i.e. the number of days left before the user is allowed to change his/her password
+    5. Maximum : The maximum number of days the password is valid (after that user is forced to change his/her password)
+    6. Warn : The number of days before password is to expire that user is warned that his/her password must be changed
+    7. Inactive : The number of days after password expires that account is disabled
+    8. Expire : days since Jan 1, 1970 that account is disabled i.e. an absolute date specifying when the login may no longer be used.
+
+## make install 指定安装路径
+
+~~~
+DESTDIR=/whereto make install 
+~~~
+
 ## reference
 
 1. [Bash 快速参考表](https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh)

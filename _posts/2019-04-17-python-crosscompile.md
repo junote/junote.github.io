@@ -30,7 +30,7 @@ csh
 source denv.sh
 setenv CFLAGS "--sysroot=${SYSROOT}" 
 setenv CPPFLAGS " --sysroot=${SYSROOT}" 
-setenv LDFLAGS=" -rdynamic -v --sysroot=${SYSROOT}" 
+setenv LDFLAGS " -rdynamic -v --sysroot=${SYSROOT}" 
 ~~~
 
 4. 编译安装
@@ -97,7 +97,7 @@ pip install ipython-7.5.0-py3-none-any.whl
 
 ~~~
 rm -rf /usr/local/lib/python3.6
-rm -rf /usr/local/bin/2to3-3.6 to
+rm -rf /usr/local/bin/2to3-3.6 
 rm -rf /usr/local/bin/pyvenv-3.6
 rm -rf /usr/local/bin/pydoc3.6
 rm -rf /usr/local/bin/idle3.6
